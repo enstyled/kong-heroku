@@ -6,5 +6,16 @@
     "logo": "https://avatars1.githubusercontent.com/u/962416?s=200&v=4",
     "success_url": "/",
     "stack": "container",
-    "addons": ["heroku-postgresql"]
+    "addons": [{
+        "plan": "heroku-postgresql",
+        "options": {
+            "version": "9.6"
+        }
+    }],
+    "env": {
+        "KONG_DATABASE": {
+            "description": "Hex-encoded secret key for signing URLs.",
+            "value": "postgres"
+        }
+    }
 }
