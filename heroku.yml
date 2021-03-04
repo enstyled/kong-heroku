@@ -1,0 +1,5 @@
+build:
+  config:
+    KONG_TAG: latest
+  docker:
+    web: Dockerfile

@@ -1,0 +1,10 @@
+{
+    "name": "kong-heroku",
+    "description": "Kong + Docker + Postgres + Heroku",
+    "keywords": ["kong", "heroku", "postgres", "docker", "microservice"],
+    "repository": "https://github.com/enstyled/kong-heroku",
+    "logo": "https://avatars1.githubusercontent.com/u/962416?s=200&v=4",
+    "success_url": "/",
+    "stack": "container",
+    "addons": ["heroku-postgresql"]
+}
