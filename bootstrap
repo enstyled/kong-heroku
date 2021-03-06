@@ -1,4 +1,8 @@
 #!/bin/bash
-EXPORT KONG_PORT_MAPS=$PORT:8443
+set -e
 
+echo "Setting the environment..."
+KONG_PORT_MAPS=$PORT:8443
+
+echo "Strting Kong..."
 kong docker-start
