@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-echo "Binding to port $PORT"
-echo "port_maps=$PORT:8000" >> /etc/kong/kong.conf
+echo "port_maps=$PORT:8000, $PORT:8443" >> /etc/kong/kong.conf
+echo "Port bound to $PORT"
 
-echo "Strting Kong..."
+echo "Starting Kong..."
 ./docker-entrypoint.sh kong docker-start -v
