@@ -4,4 +4,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: KONG_PORT_MAPS=$PORT:8000 ./docker-entrypoint.sh kong docker-start
+  web: KONG_PORT_MAPS=$PORT:8000 ./docker-entrypoint.sh kong docker-start -v
