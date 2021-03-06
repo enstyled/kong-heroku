@@ -33,4 +33,4 @@ pg_database=$dbname" >> /etc/kong/kong.conf
 
 
 echo "> Starting Kong..."
-./docker-entrypoint.sh kong docker-start
+./docker-entrypoint.sh
