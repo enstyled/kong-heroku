@@ -1,12 +1,13 @@
 #!/bin/bash
 set -e
 
+CONF_FILE=/etc/kong/kong.conf
+
 echo "> Binding to port $PORT"
-export KONG_PROXY_LISTEN="0.0.0.0:$PORT reuseport backlog=16384"
+echo "proxy_listen=0.0.0.0:$PORT reuseport backlog=16384" >> $CONF_FILE
 
-
-echo "> Parsing the database settings"
 # Parse the database URL
+echo "> Parsing the database settings"
 url="$DATABASE_URL"
 dbtype=${url%%://*}
 url_without_scheme=${url#*://}  # strip URL scheme
@@ -25,12 +26,14 @@ dbname=${rest%\?*}
 querystring=${rest#$dbname}
 
 # Set Kong database settings
-export KONG_PG_HOST=$host
-export KONG_PG_PORT=$port
-export KONG_PG_USER=$user
-export KONG_PG_PASSWORD=$password
-export KONG_PG_DATABASE=$database
+cat >> $CONF_FILE <<EOL
+pg_host=$host
+pg_port=$port
+pg_user=$user
+pg_password=$password
+pg_database=$database
+EOL
 
-
+# Start Kong
 echo "> Starting Kong..."
 ./docker-entrypoint.sh kong docker-start
