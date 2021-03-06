@@ -1,10 +1,9 @@
 #!/bin/bash
 set -e
 
-echo "> Binding to port $PORT"
+# Bind the port
 echo "proxy_listen=0.0.0.0:$PORT reuseport backlog=16384" >> /etc/kong/kong.conf
 
-echo "> Parsing the database settings"
 # Parse the database URL
 url="$DATABASE_URL"
 dbtype=${url%%://*}
