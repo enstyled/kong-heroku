@@ -5,4 +5,4 @@ echo "Setting the environment..."
 KONG_PORT_MAPS=$PORT:8443
 
 echo "Strting Kong..."
-kong docker-start
+kong start
