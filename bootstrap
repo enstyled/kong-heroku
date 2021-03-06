@@ -1,0 +1,4 @@
+#!/bin/bash
+EXPORT KONG_PORT_MAPS=$PORT:8443
+
+kong docker-start
