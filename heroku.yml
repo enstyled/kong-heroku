@@ -11,4 +11,4 @@ run:
   web:
     image: kong
     command:
-      - ./bootstrap && kong kong docker-start
+      - ./bootstrap && kong docker-start
