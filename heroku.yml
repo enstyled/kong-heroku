@@ -6,9 +6,9 @@ build:
 release:
   image: kong
   command:
-    - ./bootstrap kong migrations bootstrap
+    - ./bootstrap && kong migrations bootstrap
 run:
   web:
     image: kong
     command:
-      - ./bootstrap kong docker-start
+      - ./bootstrap && ./docker-entrypoint.sh kong docker-start
