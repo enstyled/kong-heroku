@@ -5,4 +5,4 @@ echo "Binding to port $PORT"
 export KONG_PORT_MAPS=$PORT:8000
 
 echo "Strting Kong..."
-docker-entrypoint.sh kong docker-start -v
+./docker-entrypoint.sh kong docker-start -v
