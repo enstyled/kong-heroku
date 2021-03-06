@@ -1,3 +1,3 @@
-ARG KONG_TAG=ubuntu
+ARG KONG_TAG=latest
 FROM kong:$KONG_TAG
 ADD ./bootstrap /
