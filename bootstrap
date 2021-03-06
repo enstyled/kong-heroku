@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "port_maps=$PORT:8000, $PORT:8443" >> /etc/kong/kong.conf
+echo "proxy_listen=0.0.0.0:$PORT reuseport backlog=16384" >> /etc/kong/kong.conf
 echo "Port bound to $PORT"
 
 echo "Starting Kong..."
