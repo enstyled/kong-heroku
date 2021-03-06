@@ -5,8 +5,10 @@ build:
     kong: Dockerfile
 release:
   image: kong
-  command: ./bootstrap && kong migrations bootstrap
+  command:
+    - ./bootstrap && kong migrations bootstrap
 run:
   web:
     image: kong
-    command: ./bootstrap && kong kong docker-start
+    command:
+      - ./bootstrap && kong kong docker-start
