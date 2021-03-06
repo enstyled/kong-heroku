@@ -3,3 +3,5 @@ build:
     KONG_TAG: latest
   docker:
     web: Dockerfile
+run:
+  web: KONG_PROXY_LISTEN=0.0.0.0:$PORT reuseport backlog=16384
