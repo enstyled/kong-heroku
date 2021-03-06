@@ -5,7 +5,7 @@ echo "> Binding to port $PORT"
 export KONG_PROXY_LISTEN="0.0.0.0:$PORT reuseport backlog=16384"
 
 echo "> Parsing the database settings"
-echo $DATABASE_URL | sed -e "s#^\(\(.*\)://\)\?\(\([^:@]*\)\(:\(.*\)\)\?@\)\?\([^/?]*\)\(/\(.*\)\)\?#PG_SCHEME='\2' KONG_PG_USER='\4' KONG_PG_PASSWORD='\6' KONG_PG_HOST='\7' KONG_PG_DATABASE='\9'#"
+export $(echo $DATABASE_URL | sed -e "s#^\(\(.*\)://\)\?\(\([^:@]*\)\(:\(.*\)\)\?@\)\?\([^/?]*\)\(/\(.*\)\)\?#PG_SCHEME='\2' KONG_PG_USER='\4' KONG_PG_PASSWORD='\6' KONG_PG_HOST='\7' KONG_PG_DATABASE='\9'#")
 
 echo "> Starting Kong..."
 ./docker-entrypoint.sh kong docker-start
