@@ -6,37 +6,30 @@ export KONG_PROXY_LISTEN="0.0.0.0:$PORT reuseport backlog=16384"
 
 
 echo "> Parsing the database settings"
+# Parse the database URL
 url="$DATABASE_URL"
+dbtype=${url%%://*}
+url_without_scheme=${url#*://}  # strip URL scheme
+rest=${url_without_scheme#*/}
+user_password_host_port=${url_without_scheme%%/*}
+host_port=${user_password_host_port#*@}
+user_password=${user_password_host_port%$host_port}
+user_password=${user_password%@}
+host=${host_port%:*}
+port=${host_port#$host}
+port=${port#:}
+user=${user_password%:*}
+password=${user_password#$user}
+password=${password#:}
+dbname=${rest%\?*}
+querystring=${rest#$dbname}
 
-protocol=$(echo "$1" | grep "://" | sed -e's,^\(.*://\).*,\1,g')
-# Remove the protocol
-
-url_no_protocol=$(echo "${1/$protocol/}")
-# Use tr: Make the protocol lower-case for easy string compare
-protocol=$(echo "$protocol" | tr '[:upper:]' '[:lower:]')
-
-# Extract the user and password (if any)
-userpass=$(echo "$url_no_protocol" | grep "@" | cut -d"/" -f1 | rev | cut -d"@" -f2- | rev)
-pass=$(echo "$userpass" | grep ":" | cut -d":" -f2)
-
-if [ -n "$pass" ]; then
-  user=$(echo "$userpass" | grep ":" | cut -d":" -f1)
-else
-  user="$userpass"
-fi
-
-# Extract the host
-hostport=$(echo "${url_no_protocol/$userpass@/}" | cut -d"/" -f1)
-host=$(echo "$hostport" | cut -d":" -f1)
-port=$(echo "$hostport" | grep ":" | cut -d":" -f2)
-path=$(echo "$url_no_protocol" | grep "/" | cut -d"/" -f2-)
-
-# Export to Kong settings
+# Set Kong database settings
 export KONG_PG_HOST=$host
-export KONG_PG_USER=$user
-export KONG_PG_PASSWORD=$pass
-export KONG_PG_DATABASE=$path
 export KONG_PG_PORT=$port
+export KONG_PG_USER=$user
+export KONG_PG_PASSWORD=$password
+export KONG_PG_DATABASE=$database
 
 
 echo "> Starting Kong..."
