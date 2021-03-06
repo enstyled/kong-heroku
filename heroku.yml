@@ -1,8 +1,7 @@
-setup:
-  config:
-    KONG_DATABASE: postgres
 build:
   config:
     KONG_TAG: latest
   docker:
     web: Dockerfile
+run:
+  web: KONG_PORT_MAPS=$PORT:8000 kong start -v

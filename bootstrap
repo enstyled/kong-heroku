@@ -1,8 +1,0 @@
-#!/bin/bash
-set -e
-
-echo "Binding to port $PORT"
-export KONG_PORT_MAPS=$PORT:8000
-
-echo "Strting Kong..."
-kong start -v
