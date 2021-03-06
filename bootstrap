@@ -4,8 +4,40 @@ set -e
 echo "> Binding to port $PORT"
 export KONG_PROXY_LISTEN="0.0.0.0:$PORT reuseport backlog=16384"
 
+
 echo "> Parsing the database settings"
-export $(echo $DATABASE_URL | sed -e "s#^\(\(.*\)://\)\?\(\([^:@]*\)\(:\(.*\)\)\?@\)\?\([^/?]*\)\(/\(.*\)\)\?#PG_SCHEME='\2' KONG_PG_USER='\4' KONG_PG_PASSWORD='\6' KONG_PG_HOST='\7' KONG_PG_DATABASE='\9'#")
+url="$DATABASE_URL"
+
+protocol=$(echo "$1" | grep "://" | sed -e's,^\(.*://\).*,\1,g')
+# Remove the protocol
+
+url_no_protocol=$(echo "${1/$protocol/}")
+# Use tr: Make the protocol lower-case for easy string compare
+protocol=$(echo "$protocol" | tr '[:upper:]' '[:lower:]')
+
+# Extract the user and password (if any)
+userpass=$(echo "$url_no_protocol" | grep "@" | cut -d"/" -f1 | rev | cut -d"@" -f2- | rev)
+pass=$(echo "$userpass" | grep ":" | cut -d":" -f2)
+
+if [ -n "$pass" ]; then
+  user=$(echo "$userpass" | grep ":" | cut -d":" -f1)
+else
+  user="$userpass"
+fi
+
+# Extract the host
+hostport=$(echo "${url_no_protocol/$userpass@/}" | cut -d"/" -f1)
+host=$(echo "$hostport" | cut -d":" -f1)
+port=$(echo "$hostport" | grep ":" | cut -d":" -f2)
+path=$(echo "$url_no_protocol" | grep "/" | cut -d"/" -f2-)
+
+# Export to Kong settings
+export KONG_PG_HOST=$host
+export KONG_PG_USER=$user
+export KONG_PG_PASSWORD=$pass
+export KONG_PG_DATABASE=$path
+export KONG_PG_PORT=$port
+
 
 echo "> Starting Kong..."
 ./docker-entrypoint.sh kong docker-start
