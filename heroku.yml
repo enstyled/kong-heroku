@@ -3,5 +3,3 @@ build:
     KONG_TAG: latest
   docker:
     web: Dockerfile
-run:
-  config: KONG_PORT_MAPS=$PORT:8000
