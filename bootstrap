@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-echo "Setting the environment..."
+echo "Binding to port $PORT"
 KONG_PORT_MAPS=$PORT:8000
 
 echo "Strting Kong..."
-kong start
+kong start -v
