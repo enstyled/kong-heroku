@@ -1,3 +1,3 @@
 ARG KONG_TAG=latest
 FROM kong:$KONG_TAG
-ADD ./kong.conf /etc/kong/kong.conf
+ADD ./custom_nginx.template /
