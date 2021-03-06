@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-CONF_FILE=/etc/kong/kong.conf
+CONF_FILE="/etc/kong/kong.conf"
 
 echo "> Binding to port $PORT"
 echo "proxy_listen=0.0.0.0:$PORT reuseport backlog=16384" >> $CONF_FILE
