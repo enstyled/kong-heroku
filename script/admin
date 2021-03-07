@@ -5,14 +5,13 @@ KONG_LOG_LEVEL=warn
 
 ./docker-entrypoint.sh kong docker-start &
 
-sleep 1
+sleep 2
 
 curl -sS -X PUT http://127.0.0.1:8001/services/admin-api \
   --data host=127.0.0.1 \
   --data port=8001
 
 curl -sS -X PUT http://127.0.0.1:8001/routes/admin \
-  --data paths[]=/admin \
   --data service.name=admin-api
 
 ./docker-entrypoint.sh kong stop
