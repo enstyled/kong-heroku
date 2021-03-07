@@ -1,10 +1,9 @@
 #!/bin/bash
 set -e
 
-KONG_LOG_LEVEL=warn
-
 ./docker-entrypoint.sh kong docker-start &
 
+# Give Kong a moment to boot
 sleep 2
 
 curl -sS -X PUT http://127.0.0.1:8001/services/admin-api \
