@@ -2,13 +2,13 @@ build:
   config:
     KONG_TAG: latest
   docker:
-    kong: Dockerfile
+    web: Dockerfile
 release:
-  image: kong
+  image: web
   command:
     - ./bootstrap && kong migrations bootstrap
 run:
   web:
-    image: kong
+    image: web
     command:
       - ./bootstrap && ./docker-entrypoint.sh kong docker-start
