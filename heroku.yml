@@ -4,6 +4,8 @@ build:
   docker:
     web: Dockerfile
 release:
+    config:
+      KONG_LOG_LEVEL: warn
   image: web
   command:
     - ./script/heroku && kong migrations bootstrap && ./script/admin
