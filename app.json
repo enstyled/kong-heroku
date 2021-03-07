@@ -11,5 +11,12 @@
         "options": {
             "version": "9.6"
         }
-    }]
+    }],
+    "env": {
+        "ADMIN_PATH": {
+            "description": "The path of the Kong Admin API.",
+            "generator": "admin",
+            "required": true
+        }
+    }
 }

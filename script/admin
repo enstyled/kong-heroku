@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+curl -X POST http://127.0.0.1:8001/services \
+  --data name=admin-api \
+  --data host=127.0.0.1 \
+  --data port=8001
+
+curl -X POST http://127.0.0.1:8001/services/admin-api/routes \
+  --data paths[]=/$ADMIN_PATH

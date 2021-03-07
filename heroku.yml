@@ -6,9 +6,9 @@ build:
 release:
   image: web
   command:
-    - ./bootstrap && kong migrations bootstrap
+    - ./script/heroku && kong migrations bootstrap && ./script/admin
 run:
   web:
     image: web
     command:
-      - ./bootstrap && ./docker-entrypoint.sh kong docker-start
+      - ./script/heroku && ./docker-entrypoint.sh kong docker-start
