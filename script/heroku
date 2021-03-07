@@ -32,4 +32,4 @@ pg_password=$password
 pg_database=$dbname" >> /etc/kong/kong.conf
 
 # Add the Admin UI
-echo "nginx_http_include = /etc/kong/admin-ui.kong.conf" >> /etc/kong/kong.conf
+echo "nginx_http_include = /admin-ui/admin-ui.kong.conf" >> /etc/kong/kong.conf
