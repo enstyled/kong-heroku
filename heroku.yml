@@ -1,6 +1,6 @@
 build:
   config:
-    KONG_TAG: ubuntu
+    KONG_TAG: latest
   docker:
     kong: Dockerfile
 release:
