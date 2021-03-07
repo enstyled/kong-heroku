@@ -25,6 +25,6 @@ curl -sS -X PUT http://127.0.0.1:8001/consumers/admin
 
 # Create the admin consumer auth key
 curl -sS -X PUT http://127.0.0.1:8001/consumers/admin/key-auth \
-   --data "key=$ADMIN_PASSWORD"
+   --data "key=$ADMIN_API_KEY"
 
 ./docker-entrypoint.sh kong stop

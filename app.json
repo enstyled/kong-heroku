@@ -13,8 +13,8 @@
         }
     }],
     "env": {
-        "ADMIN_PASSWORD": {
-            "description": "The password for the Kong Admin API.",
+        "ADMIN_API_KEY": {
+            "description": "The authentication key for the Kong Admin API.",
             "generator": "secret"
         }
     }
