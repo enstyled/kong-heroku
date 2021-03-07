@@ -24,12 +24,12 @@ querystring=${rest#$dbname}
 
 # Set Kong database settings
 echo "
+pg_ssl=on
 pg_host=$host
 pg_port=$port
 pg_user=$user
 pg_password=$password
-pg_database=$dbname
-pg_ssl=on" >> /etc/kong/kong.conf
+pg_database=$dbname" >> /etc/kong/kong.conf
 
 echo "-- DEBUG --"
 echo $(cat /etc/kong/kong.conf)
