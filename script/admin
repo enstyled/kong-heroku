@@ -34,7 +34,7 @@ curl -sS -X PUT http://127.0.0.1:8001/services/admin-ui \
  --data port=2112
 
 # Update or create the admin UI route
-curl -sS -X PUT http://127.0.0.1:8001/routes/ \
+curl -sS -X PUT http://127.0.0.1:8001/routes/admin-ui \
  --data paths[]=/ \
  --data service.name=admin-ui
 
