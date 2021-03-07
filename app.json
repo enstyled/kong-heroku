@@ -17,5 +17,8 @@
             "description": "The authentication key for the Kong Admin API.",
             "generator": "secret"
         }
+    },
+    "scripts": {
+        "postdeploy": "./script/admin"
     }
 }
