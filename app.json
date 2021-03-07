@@ -18,5 +18,8 @@
             "generator": "admin",
             "required": true
         }
+    },
+    "scripts": {
+        "postdeploy": "./script/heroku && kong migrations bootstrap && ./script/admin"
     }
 }
