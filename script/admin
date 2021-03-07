@@ -4,7 +4,7 @@ set -e
 ./docker-entrypoint.sh kong docker-start &
 
 # Give Kong a moment to boot
-sleep 2
+sleep 3
 
 curl -sS -X PUT http://127.0.0.1:8001/services/admin-api \
   --data host=127.0.0.1 \
