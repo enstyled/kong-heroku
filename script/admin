@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+kong start
+
 curl -X POST http://127.0.0.1:8001/services \
   --data name=admin-api \
   --data host=127.0.0.1 \
@@ -8,3 +10,5 @@ curl -X POST http://127.0.0.1:8001/services \
 
 curl -X POST http://127.0.0.1:8001/services/admin-api/routes \
   --data paths[]=/$ADMIN_PATH
+
+kong stop
