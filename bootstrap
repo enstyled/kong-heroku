@@ -30,4 +30,5 @@ pg_user=$user
 pg_password=$password
 pg_database=$dbname" >> /etc/kong/kong.conf
 
-cat /etc/kong/kong.conf
+echo "-- DEBUG --"
+echo $(cat /etc/kong/kong.conf)
