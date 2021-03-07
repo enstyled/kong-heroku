@@ -18,14 +18,13 @@ curl -sS -X PUT http://127.0.0.1:8001/routes/admin \
 
 # Enable the key authentication plugin on the admin
 curl -sS -X POST http://127.0.0.1:8001/services/admin-api/plugins \
-  --data "name=key-auth"  \
-  --data "config.key_names=apikey"
+  --data "name=key-auth"
 
 # Create the admin consumer
 curl -sS -X PUT http://127.0.0.1:8001/consumers/admin
 
 # Create the admin consumer auth key
 curl -sS -X PUT http://127.0.0.1:8001/consumers/admin/key-auth \
-   --data "key=admin_pass"
+   --data "key=$ADMIN_PASSWORD"
 
 ./docker-entrypoint.sh kong stop

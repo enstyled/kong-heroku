@@ -11,5 +11,11 @@
         "options": {
             "version": "9.6"
         }
-    }]
+    }],
+    "env": {
+        "ADMIN_PASSWORD": {
+            "description": "The password for the Kong Admin API.",
+            "generator": "secret"
+        }
+    }
 }
