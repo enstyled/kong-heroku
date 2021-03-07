@@ -3,6 +3,8 @@ set -e
 
 ./docker-entrypoint.sh kong docker-start &
 
+sleep 3
+
 curl -X POST http://127.0.0.1:8001/services \
   --data name=admin-api \
   --data host=127.0.0.1 \
