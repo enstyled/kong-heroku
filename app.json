@@ -11,15 +11,5 @@
         "options": {
             "version": "9.6"
         }
-    }],
-    "env": {
-        "ADMIN_PATH": {
-            "description": "The path of the Kong Admin API.",
-            "value": "admin",
-            "required": true
-        }
-    },
-    "scripts": {
-        "postdeploy": "./script/heroku && kong migrations bootstrap && ./script/admin"
-    }
+    }]
 }

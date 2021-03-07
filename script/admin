@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+KONG_LOG_LEVEL=warn
+
 ./docker-entrypoint.sh kong docker-start &
 
 sleep 1
