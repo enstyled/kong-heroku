@@ -3,14 +3,14 @@ set -e
 
 ./docker-entrypoint.sh kong docker-start &
 
-sleep 3
+sleep 1
 
-curl -X POST http://127.0.0.1:8001/services \
+curl -sS -X POST http://127.0.0.1:8001/services \
   --data name=admin-api \
   --data host=127.0.0.1 \
   --data port=8001
 
-curl -X POST http://127.0.0.1:8001/services/admin-api/routes \
+curl -sS -X POST http://127.0.0.1:8001/services/admin-api/routes \
   --data paths[]=/$ADMIN_PATH
 
 ./docker-entrypoint.sh kong stop
