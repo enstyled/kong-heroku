@@ -7,12 +7,12 @@ KONG_LOG_LEVEL=warn
 
 sleep 1
 
-curl -sS -X POST http://127.0.0.1:8001/services \
-  --data name=admin-api \
+curl -sS -X PUT http://127.0.0.1:8001/services/admin-api \
   --data host=127.0.0.1 \
   --data port=8001
 
-curl -sS -X POST http://127.0.0.1:8001/services/admin-api/routes \
-  --data paths[]=/$ADMIN_PATH
+curl -sS -X PUT http://127.0.0.1:8001/routes/admin \
+  --data paths[]=/admin \
+  --data service.name=admin-api
 
 ./docker-entrypoint.sh kong stop
