@@ -31,7 +31,7 @@ curl -sS -X POST http://127.0.0.1:8001/consumers/admin/key-auth \
 # Update or create the admin UI service
 curl -sS -X PUT http://127.0.0.1:8001/services/admin-ui \
  --data host=127.0.0.1 \
- --data port=2112
+ --data port=8002
 
 # Update or create the admin UI route
 curl -sS -X PUT http://127.0.0.1:8001/routes/admin-ui \
