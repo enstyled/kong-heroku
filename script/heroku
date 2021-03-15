@@ -29,4 +29,5 @@ pg_host=$host
 pg_port=$port
 pg_user=$user
 pg_password=$password
-pg_database=$dbname" >> /etc/kong/kong.conf
+pg_database=$dbname
+admin_gui_url=$KONG_ADMIN_GUI_URL" >> /etc/kong/kong.conf
