@@ -33,9 +33,9 @@ curl -sS -X PUT http://127.0.0.1:8001/services/admin-ui \
  --data host=127.0.0.1 \
  --data port=8002
 
-# Update or create the admin UI route
-curl -sS -X PUT http://127.0.0.1:8001/routes/admin-ui \
- --data paths[]=/admin-ui \
+# Create the admin UI route
+curl -sS -X POST http://127.0.0.1:8001/routes \
+ --data paths[]=/ \
  --data service.name=admin-ui
 
 ./docker-entrypoint.sh kong stop
