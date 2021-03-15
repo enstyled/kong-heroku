@@ -6,7 +6,7 @@ build:
 release:
   image: web
   command:
-    - ./script/heroku && kong migrations bootstrap && kong migrations finish && ./script/admin
+    - ./script/heroku && kong migrations bootstrap && ./script/admin
 run:
   web:
     image: web
