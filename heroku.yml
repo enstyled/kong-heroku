@@ -3,10 +3,6 @@ build:
     KONG_TAG: latest
   docker:
     web: Dockerfile
-release:
-  image: web
-  command:
-    - ./script/heroku && kong migrations bootstrap && ./script/admin
 run:
   web:
     image: web
