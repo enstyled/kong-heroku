@@ -7,35 +7,24 @@ set -e
 sleep 3
 
 # Update or create the admin service
-curl -sS -X PUT http://127.0.0.1:8001/services/admin-api \
+curl -sS -X PUT http://127.0.0.1:8001/services/admin \
   --data host=127.0.0.1 \
   --data port=8001
 
 # Update or create the admin route
 curl -sS -X PUT http://127.0.0.1:8001/routes/admin \
   --data paths[]=/admin \
-  --data service.name=admin-api
-
-# Enable the key authentication plugin on the admin
-curl -sS -X POST http://127.0.0.1:8001/services/admin-api/plugins \
-  --data "name=key-auth"
-
-# Update or create the admin consumer
-curl -sS -X PUT http://127.0.0.1:8001/consumers/admin
-
-# Create the admin consumer auth key
-curl -sS -X POST http://127.0.0.1:8001/consumers/admin/key-auth \
-   --data "key=$ADMIN_API_KEY"
+  --data service.name=admin
 
 
 # Update or create the admin UI service
-curl -sS -X PUT http://127.0.0.1:8001/services/admin-ui \
+curl -sS -X PUT http://127.0.0.1:8001/services/manager \
  --data host=127.0.0.1 \
  --data port=8002
 
 # Create the admin UI route
 curl -sS -X POST http://127.0.0.1:8001/routes \
  --data paths[]=/ \
- --data service.name=admin-ui
+ --data service.name=manager
 
 ./docker-entrypoint.sh kong stop
