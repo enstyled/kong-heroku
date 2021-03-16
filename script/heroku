@@ -32,4 +32,4 @@ pg_password=$password
 pg_database=$dbname
 enforce_rbac = on
 admin_gui_auth = basic-auth
-admin_gui_session_conf = {\"secret\":\"secret\",\"storage\":\"kong\",\"cookie_secure\":false}" >> /etc/kong/kong.conf
+admin_gui_session_conf = {\"secret\":\"secret\",\"storage\":\"kong\"}" >> /etc/kong/kong.conf
