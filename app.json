@@ -6,20 +6,15 @@
     "logo": "https://avatars1.githubusercontent.com/u/962416?s=200&v=4",
     "success_url": "/",
     "stack": "container",
-    "addons": [{
-        "plan": "heroku-postgresql",
-        "options": {
-            "version": "9.6"
-        }
-    }],
+    "addons": ["heroku-postgresql"],
     "env": {
         "KONG_PASSWORD": {
             "description": "The authentication key for the Kong Admin API.",
             "generator": "secret"
         },
         "KONG_NGINX_WORKER_PROCESSES": {
-            "description": "The initial number of Kong NGINX worker processes.",
-            "value": "2"
+            "description": "The number of Kong Nginx workers to run.",
+            "value": "1"
         }
     }
 }

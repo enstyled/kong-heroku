@@ -16,6 +16,14 @@ curl -sS -X PUT http://127.0.0.1:8001/routes/admin \
   --data paths[]=/admin \
   --data service.name=admin
 
+# Enable the CORS plugin on the admin
+curl -sS -X POST http://127.0.0.1:8001/services/admin-api/plugins \
+  --data "name=cors" \
+  --data "config.origins=*" \
+  --data "config.headers=Content-Type" \
+  --data "config.headers=apikey" \
+  --data "config.max_age=3600"
+
 
 # Update or create the admin UI service
 curl -sS -X PUT http://127.0.0.1:8001/services/manager \
