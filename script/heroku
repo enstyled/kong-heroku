@@ -25,6 +25,7 @@ querystring=${rest#$dbname}
 # Set Kong database settings
 echo "
 pg_ssl=on
+pg_ssl_version=tlsv1_2
 pg_host=$host
 pg_port=$port
 pg_user=$user
