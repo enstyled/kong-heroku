@@ -31,6 +31,7 @@ curl -sS -X POST http://127.0.0.1:8001/consumers/admin/key-auth \
 curl -sS -X POST http://127.0.0.1:8001/services/admin-api/plugins \
   --data "name=cors" \
   --data "config.origins=*" \
+  --data "config.headers=Content-Type" \
   --data "config.headers=apikey" \
   --data "config.max_age=3600"
 
