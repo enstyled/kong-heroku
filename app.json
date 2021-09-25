@@ -14,7 +14,7 @@
         },
         "KONG_NGINX_WORKER_PROCESSES": {
             "description": "The number of Kong Nginx workers to run.",
-            "generator": "1"
+            "value": "1"
         }
     }
 }
