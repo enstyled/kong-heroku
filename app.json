@@ -12,6 +12,9 @@
             "description": "The authentication key for the Kong Admin API.",
             "generator": "secret"
         },
-        "KONG_NGINX_WORKER_PROCESSES": 1
+        "KONG_NGINX_WORKER_PROCESSES": {
+            "description": "The number of Kong Nginx workers to run.",
+            "generator": "1"
+        }
     }
 }
